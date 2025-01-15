@@ -1,19 +1,21 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
-import Products from "./pages/Products";
+import ProductsPage from "./pages/Products";
 import RootLayout from "./pages/RootLayout";
 import ErrorPage from "./pages/Error";
+import ProductionDetailPage from "./pages/ProductDetail";
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <RootLayout />,
-      children: [
-        { path: "/", element: <Home /> },
-        { path: "/Products", element: <Products /> },
-      ],
       errorElement: <ErrorPage />,
+      children: [
+        { path: '', element: <Home /> },
+        { path: 'products', element: <ProductsPage /> },
+        { path: 'products/:id', element: <ProductionDetailPage /> },
+      ],
     },
   ]);
 
@@ -21,3 +23,6 @@ function App() {
 }
 
 export default App;
+
+
+// con absolute Paths devo inserire lo / in tutti i percorsi, con i relative Paths non ho bisogno degli /.
